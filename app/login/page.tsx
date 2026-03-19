@@ -37,7 +37,7 @@ export default function LoginPage() {
       if (next === CORRECT_PIN) {
         setStatus('success');
         document.cookie = 'jarvis_auth=1; path=/; max-age=86400';
-        setTimeout(() => router.push('/tracker'), 1600);
+        setTimeout(() => { window.location.href = '/tracker'; }, 1600);
       } else {
         setAttempts(a => a + 1);
         setStatus('error');

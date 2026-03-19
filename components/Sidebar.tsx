@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { PlaneTakeoff, Radio, Plus, Eye } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { PlaneTakeoff, Radio, Plus, Eye, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV = [
@@ -14,6 +14,12 @@ const NAV = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  function logout() {
+    document.cookie = 'jarvis_auth=; path=/; max-age=0';
+    router.push('/login');
+  }
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-[#080c14] border-r border-[#1a1e30] flex flex-col z-50">
@@ -105,6 +111,13 @@ export default function Sidebar() {
         <div className="mt-2 font-mono text-[10px] text-slate-700 text-center">
           v2.0 · JARVIS
         </div>
+        <button
+          onClick={logout}
+          className="mt-3 w-full flex items-center gap-2 px-3 py-2 rounded border border-red-900/30 text-red-500/70 hover:text-red-400 hover:bg-red-500/10 hover:border-red-500/30 transition-all duration-150 font-mono text-xs tracking-widest"
+        >
+          <LogOut className="w-3.5 h-3.5" />
+          LOGOUT
+        </button>
       </div>
     </aside>
   );
