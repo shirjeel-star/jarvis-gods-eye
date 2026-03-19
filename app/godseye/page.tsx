@@ -467,7 +467,7 @@ export default function GodsEyePage() {
   const tc = THREAT_CONFIG[threatLevel];
 
   return (
-    <div className="flex flex-col h-screen bg-[#030608] overflow-hidden select-none">
+<div className="flex flex-col h-[calc(100vh-3.5rem)] md:h-screen bg-[#030608] overflow-hidden select-none">
 
       {/* ── TOP BAR ─────────────────────────────────────────────────────────── */}
       <div className="flex-none h-12 border-b border-sky-500/15 bg-[#050d14] flex items-center justify-between px-5 z-30">

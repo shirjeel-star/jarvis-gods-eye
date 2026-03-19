@@ -77,9 +77,10 @@ export default function GodEyeGlobe({ userLocation, airports, evacArcs = [] }: P
   const containerRef = useRef<HTMLDivElement>(null);
   const getDims = () => {
     const mobile = window.innerWidth < 768;
+    // On mobile: extra 56px (3.5rem) is consumed by the mobile nav padding-top in layout.tsx
     return {
       w: mobile ? window.innerWidth : Math.max(window.innerWidth - 380, 300),
-      h: Math.max(window.innerHeight - 316, 300),
+      h: Math.max(window.innerHeight - (mobile ? 372 : 316), 300),
     };
   };
   const [dims, setDims] = useState(getDims);
