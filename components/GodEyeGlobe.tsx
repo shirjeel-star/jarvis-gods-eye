@@ -72,17 +72,19 @@ export default function GodEyeGlobe({ userLocation, airports, evacArcs = [] }: P
 
   // Self-contained sizing — this component is always ssr:false so window is
   // guaranteed to be available on first (client-only) render.
-  // Right panel = 380px; top bar + ticker = 76px; intel brief = 240px → 316px total vertical offset.
+  // Right panel = 380px on desktop; top bar + ticker = 76px; intel brief = 240px → 316px total vertical offset.
+  // On mobile (< 768px) the right panel is hidden, so globe uses full window width.
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dims, setDims] = useState({
-    w: Math.max(window.innerWidth - 380, 300),
-    h: Math.max(window.innerHeight - 316, 300),
-  });
-  useEffect(() => {
-    const update = () => setDims({
-      w: Math.max(window.innerWidth - 380, 300),
+  const getDims = () => {
+    const mobile = window.innerWidth < 768;
+    return {
+      w: mobile ? window.innerWidth : Math.max(window.innerWidth - 380, 300),
       h: Math.max(window.innerHeight - 316, 300),
-    });
+    };
+  };
+  const [dims, setDims] = useState(getDims);
+  useEffect(() => {
+    const update = () => setDims(getDims());
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
   }, []);

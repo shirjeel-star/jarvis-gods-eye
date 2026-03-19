@@ -1053,8 +1053,8 @@ export default function GodsEyePage() {
 
         </div>{/* end left column */}
 
-        {/* Right panel */}
-        <div className="w-[380px] flex-none flex flex-col border-l border-sky-500/15 bg-[#040b12]">
+        {/* Right panel — hidden on mobile, visible on md+ */}
+        <div className="hidden md:flex w-[380px] flex-none flex-col border-l border-sky-500/15 bg-[#040b12]">
 
           {/* ── EVACUATION ROUTES ───────────────────────────────────────────── */}
           {(evacRoutes.length > 0 || evacLoading) && showEvac && (
