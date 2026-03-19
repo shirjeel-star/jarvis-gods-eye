@@ -50,9 +50,9 @@ export default function FlightDetailPage({ params }: { params: { id: string } })
   return (
     <div className="min-h-screen bg-[#080a0f]">
       {/* Header */}
-      <div className="border-b border-[#1a1e30] bg-[#080c14] px-8 py-5">
+      <div className="border-b border-[#1a1e30] bg-[#080c14] px-4 sm:px-8 py-4 sm:py-5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 ml-10 md:ml-0">
             <Link
               href="/flights"
               className="flex items-center gap-1.5 text-slate-500 hover:text-slate-300 transition-colors text-sm"
@@ -68,7 +68,7 @@ export default function FlightDetailPage({ params }: { params: { id: string } })
                   {flight.status}
                 </span>
               </div>
-              <h1 className="text-2xl font-semibold text-white font-mono">{flight.flightNumber}</h1>
+              <h1 className="text-lg sm:text-2xl font-semibold text-white font-mono">{flight.flightNumber}</h1>
               <div className="text-sm text-slate-500">{flight.airline} · {flight.aircraft}</div>
             </div>
           </div>
@@ -91,14 +91,14 @@ export default function FlightDetailPage({ params }: { params: { id: string } })
         </div>
       </div>
 
-      <div className="p-8 space-y-6 max-w-5xl">
+      <div className="p-4 sm:p-8 space-y-4 sm:space-y-6 max-w-5xl">
         {/* Main route card */}
         <div className="panel p-8 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-cyan-500/40" />
-          <div className="flex items-center gap-8">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
             {/* Origin */}
-            <div className="flex-1">
-              <div className="font-mono text-6xl font-bold text-white mb-2">{flight.origin.code}</div>
+            <div className="flex-1 text-center sm:text-left">
+              <div className="font-mono text-4xl sm:text-6xl font-bold text-white mb-2">{flight.origin.code}</div>
               <div className="text-lg text-slate-400">{flight.origin.name}</div>
               <div className="font-mono text-sm text-slate-500 mt-1">{flight.origin.city}, {flight.origin.country}</div>
               <div className="mt-4 space-y-1">
@@ -132,8 +132,8 @@ export default function FlightDetailPage({ params }: { params: { id: string } })
             </div>
 
             {/* Destination */}
-            <div className="flex-1 text-right">
-              <div className="font-mono text-6xl font-bold text-white mb-2">{flight.destination.code}</div>
+            <div className="flex-1 text-center sm:text-right">
+              <div className="font-mono text-4xl sm:text-6xl font-bold text-white mb-2">{flight.destination.code}</div>
               <div className="text-lg text-slate-400">{flight.destination.name}</div>
               <div className="font-mono text-sm text-slate-500 mt-1">{flight.destination.city}, {flight.destination.country}</div>
               <div className="mt-4 space-y-1">
@@ -158,7 +158,7 @@ export default function FlightDetailPage({ params }: { params: { id: string } })
         </div>
 
         {/* Details grid */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
           {[
             { label: 'Duration', value: formatDuration(flight.duration), icon: Clock },
             { label: 'Distance', value: formatDistance(flight.distance), icon: Globe },
@@ -175,7 +175,7 @@ export default function FlightDetailPage({ params }: { params: { id: string } })
         </div>
 
         {/* Coordinates */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div className="panel p-5">
             <div className="flex items-center gap-2 mb-3">
               <MapPin className="w-4 h-4 text-slate-600" />

@@ -28,8 +28,8 @@ export default function EditFlightPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="min-h-screen bg-[#080a0f]">
-      <div className="border-b border-[#1a1e30] bg-[#080c14] px-8 py-5">
-        <div className="flex items-center gap-4">
+      <div className="border-b border-[#1a1e30] bg-[#080c14] px-4 sm:px-8 py-4 sm:py-5">
+        <div className="flex items-center gap-4 ml-10 md:ml-0">
           <Link
             href={`/flights/${flight.id}`}
             className="flex items-center gap-1.5 text-slate-500 hover:text-slate-300 transition-colors text-sm"
@@ -43,12 +43,12 @@ export default function EditFlightPage({ params }: { params: { id: string } }) {
               <Plane className="w-4 h-4 text-amber-400" />
               <span className="font-mono text-xs text-amber-400 tracking-widest uppercase">Editing</span>
             </div>
-            <h1 className="text-2xl font-semibold text-white">Edit Flight {flight.flightNumber}</h1>
+            <h1 className="text-lg sm:text-2xl font-semibold text-white">Edit Flight {flight.flightNumber}</h1>
           </div>
         </div>
       </div>
 
-      <div className="p-8 max-w-4xl">
+      <div className="p-4 sm:p-8 max-w-4xl">
         <FlightForm initial={flight} />
       </div>
     </div>

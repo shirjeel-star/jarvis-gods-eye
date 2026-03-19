@@ -7,8 +7,8 @@ import Link from 'next/link';
 export default function NewFlightPage() {
   return (
     <div className="min-h-screen bg-[#080a0f]">
-      <div className="border-b border-[#1a1e30] bg-[#080c14] px-8 py-5">
-        <div className="flex items-center gap-4">
+      <div className="border-b border-[#1a1e30] bg-[#080c14] px-4 sm:px-8 py-4 sm:py-5">
+          <div className="flex items-center gap-4 ml-10 md:ml-0">
           <Link
             href="/flights"
             className="flex items-center gap-1.5 text-slate-500 hover:text-slate-300 transition-colors text-sm"
@@ -27,7 +27,7 @@ export default function NewFlightPage() {
         </div>
       </div>
 
-      <div className="p-8 max-w-4xl">
+      <div className="p-4 sm:p-8 max-w-4xl">
         <FlightForm />
       </div>
     </div>

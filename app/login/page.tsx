@@ -357,9 +357,9 @@ export default function LoginPage() {
           {/* Numpad */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 72px)',
-            gridTemplateRows: 'repeat(4, 64px)',
-            gap: '12px',
+            gridTemplateColumns: 'repeat(3, clamp(60px, 18vw, 72px))',
+            gridTemplateRows: 'repeat(4, clamp(52px, 14vw, 64px))',
+            gap: 'clamp(8px, 2vw, 12px)',
           }}>
             {PAD.map((k) => (
               <button

@@ -22,9 +22,9 @@ export default function MapPage() {
 
   return (
     <div className="min-h-screen bg-[#080a0f]">
-      <div className="border-b border-[#1a1e30] bg-[#080c14] px-8 py-5">
+      <div className="border-b border-[#1a1e30] bg-[#080c14] px-4 sm:px-8 py-4 sm:py-5">
         <div className="flex items-center justify-between">
-          <div>
+          <div className="ml-10 md:ml-0">
             <div className="flex items-center gap-2 mb-1">
               <Map className="w-4 h-4 text-cyan-400" />
               <span className="font-mono text-xs text-cyan-400 tracking-widest uppercase">Route Visualization</span>
@@ -37,10 +37,10 @@ export default function MapPage() {
         </div>
       </div>
 
-      <div className="p-8 space-y-6">
+      <div className="p-4 sm:p-8 space-y-4 sm:space-y-6">
         {/* Stats bar */}
         {stats && (
-          <div className="grid grid-cols-5 gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3">
             {[
               { label: 'Total Routes', value: flights.length.toString() },
               { label: 'Airports Visited', value: stats.uniqueAirports.toString() },
@@ -49,7 +49,7 @@ export default function MapPage() {
               { label: 'Flight Hours', value: stats.totalHours.toFixed(0) + 'h' },
             ].map(({ label, value }) => (
               <div key={label} className="panel p-4 text-center">
-                <div className="font-mono text-xl font-bold text-cyan-400">{value}</div>
+                <div className="font-mono text-lg sm:text-xl font-bold text-cyan-400">{value}</div>
                 <div className="font-mono text-[10px] text-slate-600 uppercase tracking-wider mt-1">{label}</div>
               </div>
             ))}
@@ -69,7 +69,7 @@ export default function MapPage() {
 
         {/* Airport list */}
         {flights.length > 0 && (
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="panel overflow-hidden">
               <div className="px-5 py-3 border-b border-[#1a1e30]">
                 <span className="font-mono text-[10px] text-slate-500 uppercase tracking-widest">Visited Airports</span>

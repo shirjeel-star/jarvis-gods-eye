@@ -248,12 +248,12 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
       )}
 
       {/* Flight Identification */}
-      <section className="panel p-6">
+      <section className="panel p-4 sm:p-6">
         <div className="flex items-center gap-2 mb-5 pb-4 border-b border-[#1a1e30]">
           <Plane className="w-4 h-4 text-cyan-400" />
           <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Flight Identification</h2>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label className={LabelClass}>Flight Number *</label>
             <input
@@ -296,7 +296,7 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
       </section>
 
       {/* Route */}
-      <section className="panel p-6">
+      <section className="panel p-4 sm:p-6">
         <div className="flex items-center gap-2 mb-5 pb-4 border-b border-[#1a1e30]">
           <span className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Route</span>
           {distance > 0 && (
@@ -305,14 +305,14 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
             </div>
           )}
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <AirportPicker label="Origin Airport *" value={form.origin} onChange={(a) => setForm({ ...form, origin: a })} />
           <AirportPicker label="Destination Airport *" value={form.destination} onChange={(a) => setForm({ ...form, destination: a })} />
         </div>
       </section>
 
       {/* Schedule */}
-      <section className="panel p-6">
+      <section className="panel p-4 sm:p-6">
         <div className="flex items-center justify-between mb-5 pb-4 border-b border-[#1a1e30]">
           <span className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Schedule</span>
           {duration > 0 && (
@@ -321,7 +321,7 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
             </div>
           )}
         </div>
-        <div className="grid grid-cols-2 gap-6 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4">
           <div>
             <label className={LabelClass}>Scheduled Departure *</label>
             <input
@@ -341,7 +341,7 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className={LabelClass}>Actual Departure</label>
             <input
@@ -364,11 +364,11 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
       </section>
 
       {/* Crew & Status */}
-      <section className="panel p-6">
+      <section className="panel p-4 sm:p-6">
         <div className="flex items-center gap-2 mb-5 pb-4 border-b border-[#1a1e30]">
           <span className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Crew & Status</span>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className={LabelClass}>Crew Position</label>
             <select
@@ -397,7 +397,7 @@ export default function FlightForm({ initial, onSave }: FlightFormProps) {
       </section>
 
       {/* Notes */}
-      <section className="panel p-6">
+      <section className="panel p-4 sm:p-6">
         <div className="flex items-center gap-2 mb-5 pb-4 border-b border-[#1a1e30]">
           <span className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Notes</span>
         </div>

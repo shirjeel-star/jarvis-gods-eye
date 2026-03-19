@@ -28,8 +28,8 @@ export default function StatsPage() {
 
   return (
     <div className="min-h-screen bg-[#080a0f]">
-      <div className="border-b border-[#1a1e30] bg-[#080c14] px-8 py-5">
-        <div>
+      <div className="border-b border-[#1a1e30] bg-[#080c14] px-4 sm:px-8 py-4 sm:py-5">
+        <div className="ml-10 md:ml-0">
           <div className="flex items-center gap-2 mb-1">
             <BarChart3 className="w-4 h-4 text-cyan-400" />
             <span className="font-mono text-xs text-cyan-400 tracking-widest uppercase">Analytics</span>
@@ -39,9 +39,9 @@ export default function StatsPage() {
         </div>
       </div>
 
-      <div className="p-8 space-y-8">
+      <div className="p-4 sm:p-8 space-y-6 sm:space-y-8">
         {/* Key metrics */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
             { label: 'Total Flights', value: stats.totalFlights, sub: 'all time', icon: Plane, accent: 'cyan' },
             { label: 'Hours in Air', value: stats.totalHours.toFixed(1) + 'h', sub: `${totalDays.toFixed(1)} days`, icon: Clock, accent: 'amber' },
@@ -65,7 +65,7 @@ export default function StatsPage() {
                     </div>
                     <span className="font-mono text-[10px] text-slate-600 uppercase tracking-widest">{label}</span>
                   </div>
-                  <div className="font-mono text-3xl font-bold text-white tracking-tight">{value}</div>
+                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}</div>
                   {sub && <div className="font-mono text-xs text-slate-500 mt-1">{sub}</div>}
                 </div>
               </div>
@@ -80,11 +80,11 @@ export default function StatsPage() {
               <Award className="w-4 h-4 text-amber-400" />
               <span className="font-mono text-[10px] text-slate-500 uppercase tracking-widest">Longest Flight</span>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 flex-wrap">
               <div className="flex items-center gap-4">
-                <span className="font-mono text-2xl font-bold text-white">{stats.longestFlight.origin.code}</span>
+                <span className="font-mono text-xl sm:text-2xl font-bold text-white">{stats.longestFlight.origin.code}</span>
                 <span className="text-slate-600">→</span>
-                <span className="font-mono text-2xl font-bold text-white">{stats.longestFlight.destination.code}</span>
+                <span className="font-mono text-xl sm:text-2xl font-bold text-white">{stats.longestFlight.destination.code}</span>
               </div>
               <div className="font-mono text-sm text-amber-400">{formatDuration(stats.longestFlight.duration)}</div>
               <div className="text-xs text-slate-500">{stats.longestFlight.airline} · {stats.longestFlight.flightNumber}</div>
@@ -95,7 +95,7 @@ export default function StatsPage() {
 
         {/* Charts */}
         {flights.length > 0 && (
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <Charts stats={stats} />
           </div>
         )}

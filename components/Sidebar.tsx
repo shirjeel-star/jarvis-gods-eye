@@ -1,9 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { PlaneTakeoff, Radio, Plus, Eye, LogOut } from 'lucide-react';
+import { PlaneTakeoff, Radio, Plus, Eye, LogOut, Menu, X as XIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV = [
@@ -15,17 +16,49 @@ const NAV = [
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   function logout() {
     document.cookie = 'jarvis_auth=; path=/; max-age=0';
     router.push('/login');
   }
 
+  function closeNav() { setMobileOpen(false); }
+
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-[#080c14] border-r border-[#1a1e30] flex flex-col z-50">
+    <>
+      {/* Hamburger — mobile only */}
+      <button
+        onClick={() => setMobileOpen(true)}
+        className="md:hidden fixed top-3 left-3 z-[70] p-2 rounded-lg bg-[#080c14] border border-[#1a1e30] text-slate-400 hover:text-slate-200 active:scale-95 transition-all"
+        aria-label="Open menu"
+      >
+        <Menu className="w-5 h-5" />
+      </button>
+
+      {/* Backdrop */}
+      {mobileOpen && (
+        <div
+          onClick={() => setMobileOpen(false)}
+          className="md:hidden fixed inset-0 z-[65] bg-black/60 backdrop-blur-sm"
+        />
+      )}
+
+    <aside className={cn(
+      "fixed left-0 top-0 h-screen w-64 bg-[#080c14] border-r border-[#1a1e30] flex flex-col z-[66] transition-transform duration-300 ease-in-out",
+      mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+    )}>
       {/* Logo */}
       <div className="p-6 border-b border-[#1a1e30]">
         <div className="flex items-center gap-3">
+          {/* Close button on mobile */}
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="md:hidden p-1 -ml-1 text-slate-600 hover:text-slate-400 mr-1"
+            aria-label="Close menu"
+          >
+            <XIcon className="w-4 h-4" />
+          </button>
           <div className="relative">
             <Image
               src="/jarvis-logo.svg"
@@ -61,6 +94,7 @@ export default function Sidebar() {
               <Link
                 key={href}
                 href={href}
+                onClick={closeNav}
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded transition-all duration-150 group',
                   active
@@ -87,6 +121,7 @@ export default function Sidebar() {
         <div className="pt-4 border-t border-[#1a1e30]">
           <Link
             href="/flights/new"
+            onClick={closeNav}
             className="flex items-center gap-3 px-3 py-2.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 hover:bg-sky-500/20 hover:border-sky-500/40 transition-all duration-150"
           >
             <Plus className="w-4 h-4" />
@@ -120,5 +155,6 @@ export default function Sidebar() {
         </button>
       </div>
     </aside>
+    </>
   );
 }
