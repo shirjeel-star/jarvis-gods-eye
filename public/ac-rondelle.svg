@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120">
+  <!-- Ring: two arcs with gap at bottom where stem exits -->
+  <path d="M50 6 A44 44 0 1 1 46 94" stroke="#F01428" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M54 94 A44 44 0 0 1 50 6" stroke="#F01428" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- Maple leaf + stem (single filled path) -->
+  <path fill="#F01428" d="
+    M50 13
+    L55 28 L64 20 L61 32 L72 29 L67 41 L80 44 L70 53 L76 62
+    L64 59 L63 69 L54 69 L54 116 L46 116 L46 69
+    L37 69 L36 59 L24 62 L30 53 L20 44 L33 41 L28 29
+    L39 32 L36 20 L45 28 Z
+  "/>
+</svg>

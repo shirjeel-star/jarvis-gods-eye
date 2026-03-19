@@ -1,0 +1,19 @@
+# deps
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# env files — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+*.swp
+.vscode/
+
+# vercel
+.vercel

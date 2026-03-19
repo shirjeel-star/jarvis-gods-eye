@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #080a0f;
+  --surface: #0d0f1a;
+  --panel: #111320;
+  --border: #1a1e30;
+  --border-bright: #252a40;
+  --cyan: #00d4ff;
+  --text-primary: #e2e8f0;
+  --text-secondary: #64748b;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  background-color: #080a0f;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Intel ticker scroll animation */
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0f1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1e30;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #252a40;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+}
+
+/* Grid background */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(26,30,48,0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,30,48,0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.glow-cyan-text {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Animated border gradient */
+.border-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+/* Panel styles */
+.panel {
+  background-color: #111320;
+  border: 1px solid #1a1e30;
+  border-radius: 4px;
+}
+
+.panel-hover:hover {
+  border-color: #252a40;
+  background-color: #131626;
+  transition: all 0.2s ease;
+}
+
+/* Status pulse animations */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Scanline effect */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Data highlight */
+.data-highlight {
+  background: linear-gradient(90deg, rgba(0,212,255,0.05) 0%, transparent 100%);
+  border-left: 2px solid rgba(0,212,255,0.4);
+}
+
+/* Flight path animation */
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+
+.flight-path-animated {
+  stroke-dasharray: 6 4;
+  animation: dash-flow 0.8s linear infinite;
+}
+
+/* Number counter */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Table row hover */
+.table-row-hover:hover {
+  background-color: rgba(0, 212, 255, 0.03);
+  border-color: rgba(0, 212, 255, 0.15) !important;
+}
+
+/* Input focus glow */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.3), 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+/* Custom checkbox */
+input[type="checkbox"] {
+  accent-color: #00d4ff;
+}
+
+/* Tag style */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Divider with label */
+.divider-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #374151;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.divider-label::before,
+.divider-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #1a1e30;
+}
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #111320 25%, #1a1e30 50%, #111320 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
