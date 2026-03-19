@@ -4,7 +4,7 @@ import Sidebar from '@/components/Sidebar';
 
 export const metadata: Metadata = {
   title: 'JARVIS — Intelligence & Routing System',
-  description: 'AI-powered tactical intelligence, emergency routing, and flight operations platform',
+  description: 'AI-powered flight operations intelligence, emergency routing, and crew management platform',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -170,7 +170,7 @@ export default function LoginPage() {
           fontFamily: "'JetBrains Mono', monospace",
         }}>
           <div style={{ color: '#00d4ff', fontSize: '0.75rem', letterSpacing: '0.3em', opacity: 0.7 }}>
-            JARVIS TACTICAL SYSTEM v4.1.0
+            JARVIS OPERATIONS SYSTEM v4.1.0
           </div>
           <div style={{ color: '#1e293b', fontSize: '0.65rem', marginTop: '0.5rem', letterSpacing: '0.15em' }}>
             INITIALIZING SECURE CHANNEL...
@@ -265,7 +265,7 @@ export default function LoginPage() {
           color: 'rgba(0,212,255,0.2)', fontSize: '0.55rem', letterSpacing: '0.15em',
           animation: 'hud-slide 0.6s ease 2s both',
         }}>
-          <span>JARVIS:TACTICAL:OPERATIONS</span>
+          <span>JARVIS:OPERATIONS:CONTROL</span>
           <span>{attempts > 0 ? `AUTH ATTEMPTS: ${attempts}` : 'AWAITING AUTHENTICATION'}</span>
           <span>KERNEL:4.1.0-STABLE</span>
         </div>
@@ -303,7 +303,7 @@ export default function LoginPage() {
               color: 'rgba(0,212,255,0.4)',
               marginTop: '0.4rem',
             }}>
-              TACTICAL INTELLIGENCE PLATFORM
+              FLIGHT INTELLIGENCE PLATFORM
             </div>
           </div>
 

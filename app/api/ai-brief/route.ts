@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     `THREAT SCENARIO: ${scenario || 'GENERAL EMERGENCY — IMMEDIATE EVACUATION REQUIRED'}\n\n` +
     (worldCtx ? `GLOBAL SITUATION REPORT (live intelligence feed):\n${worldCtx}\n\n` : '') +
     `NEAREST AIRPORTS:\n${airportList}\n\n` +
-    `Generate a tactical intelligence evacuation brief. Include: THREAT ASSESSMENT (reference relevant active conflicts near the position), PRIMARY ROUTE, CONTINGENCY ROUTES, ETA TO SAFETY, CRITICAL WARNINGS. Be precise and actionable. Reference the global situation where relevant to the user's location.`;
+    `Generate an operational intelligence evacuation brief. Include: THREAT ASSESSMENT (reference relevant active conflicts near the position), PRIMARY ROUTE, CONTINGENCY ROUTES, ETA TO SAFETY, CRITICAL WARNINGS. Be precise and actionable. Reference the global situation where relevant to the user's location.`;
 
   const oaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
         {
           role: 'system',
           content:
-            'You are JARVIS, an advanced AI tactical intelligence system. You have real-time access to global intelligence feeds including active conflicts, war zones, and geopolitical crises. Provide classified-style evacuation briefings with military precision. Use ALL CAPS section headers followed by colon. Be direct, concise, and prioritize life safety. Cross-reference the user\'s position with known conflict zones and active threats in the global situation report provided. Today: ' +
+            'You are JARVIS, an advanced AI operational intelligence system. You have real-time access to global intelligence feeds including active conflicts, war zones, and geopolitical crises. Provide classified-style evacuation briefings with military precision. Use ALL CAPS section headers followed by colon. Be direct, concise, and prioritize life safety. Cross-reference the user\'s position with known conflict zones and active threats in the global situation report provided. Today: ' +
             new Date().toUTCString(),
         },
         { role: 'user', content: userPrompt },
@@ -137,7 +137,7 @@ function mockBrief(
     .map(e => `• ${e.region}: ${e.headline}`).join('\n');
 
   return (
-    `[JARVIS // TACTICAL BRIEF // DEMO MODE]\n` +
+    `[JARVIS // OPERATIONS BRIEF // DEMO MODE]\n` +
     `════════════════════════════════════════\n` +
     `⚠  Add OPENAI_API_KEY to .env.local for live GPT-4o AI analysis\n\n` +
     `THREAT ASSESSMENT:\n` +
