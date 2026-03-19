@@ -55,25 +55,48 @@ function haversineKm(la1: number, lo1: number, la2: number, lo2: number) {
 
 // ── regional exit airport hubs ─────────────────────────────────────────────
 const SAFE_HUBS = [
-  { city: 'Amman',    country: 'Jordan',   lat: 31.72, lng: 35.99, iata: 'AMM' },
-  { city: 'Beirut',   country: 'Jordan',   lat: 33.82, lng: 35.49, iata: 'BEY' },
-  { city: 'Cairo',    country: 'Egypt',    lat: 30.11, lng: 31.40, iata: 'CAI' },
-  { city: 'Istanbul', country: 'Turkey',   lat: 41.27, lng: 28.74, iata: 'IST' },
-  { city: 'Dubai',    country: 'UAE',      lat: 25.25, lng: 55.36, iata: 'DXB' },
-  { city: 'Athens',   country: 'Greece',   lat: 37.94, lng: 23.94, iata: 'ATH' },
-  { city: 'Warsaw',   country: 'Poland',   lat: 52.17, lng: 20.97, iata: 'WAW' },
-  { city: 'Bucharest',country: 'Romania',  lat: 44.57, lng: 26.10, iata: 'OTP' },
-  { city: 'Bangkok',  country: 'Thailand', lat: 13.69, lng: 100.74,iata: 'BKK' },
-  { city: 'Singapore',country: 'Singapore',lat: 1.35,  lng: 103.99,iata: 'SIN' },
-  { city: 'Nairobi',  country: 'Kenya',    lat: -1.32, lng: 36.93, iata: 'NBO' },
-  { city: 'Djibouti', country: 'Djibouti', lat: 11.55, lng: 43.16, iata: 'JIB' },
-  { city: 'Mexico City',country:'Mexico',  lat: 19.44, lng: -99.07,iata: 'MEX' },
-  { city: 'Lima',     country: 'Peru',     lat: -12.02,lng: -77.11,iata: 'LIM' },
-  { city: 'Toronto',  country: 'Canada',   lat: 43.68, lng: -79.63,iata: 'YYZ' },
-  { city: 'London',   country: 'UK',       lat: 51.48, lng: -0.46, iata: 'LHR' },
-  { city: 'Frankfurt',country: 'Germany',  lat: 50.04, lng: 8.56,  iata: 'FRA' },
-  { city: 'Tokyo',    country: 'Japan',    lat: 35.55, lng: 139.78,iata: 'NRT' },
-  { city: 'Sydney',   country: 'Australia',lat: -33.95,lng: 151.18,iata: 'SYD' },
+  // Middle East / Near East
+  { city: 'Amman',       country: 'Jordan',      lat: 31.72,  lng: 35.99,   iata: 'AMM' },
+  { city: 'Beirut',      country: 'Lebanon',     lat: 33.82,  lng: 35.49,   iata: 'BEY' },
+  { city: 'Cairo',       country: 'Egypt',       lat: 30.11,  lng: 31.40,   iata: 'CAI' },
+  { city: 'Istanbul',    country: 'Turkey',       lat: 41.27,  lng: 28.74,   iata: 'IST' },
+  { city: 'Dubai',       country: 'UAE',          lat: 25.25,  lng: 55.36,   iata: 'DXB' },
+  { city: 'Muscat',      country: 'Oman',         lat: 23.59,  lng: 58.29,   iata: 'MCT' },
+  { city: 'Doha',        country: 'Qatar',        lat: 25.27,  lng: 51.61,   iata: 'DOH' },
+  { city: 'Riyadh',      country: 'Saudi Arabia', lat: 24.96,  lng: 46.70,   iata: 'RUH' },
+  // Europe
+  { city: 'Athens',      country: 'Greece',       lat: 37.94,  lng: 23.94,   iata: 'ATH' },
+  { city: 'Warsaw',      country: 'Poland',       lat: 52.17,  lng: 20.97,   iata: 'WAW' },
+  { city: 'Bucharest',   country: 'Romania',      lat: 44.57,  lng: 26.10,   iata: 'OTP' },
+  { city: 'London',      country: 'UK',           lat: 51.48,  lng: -0.46,   iata: 'LHR' },
+  { city: 'Frankfurt',   country: 'Germany',      lat: 50.04,  lng: 8.56,    iata: 'FRA' },
+  { city: 'Paris',       country: 'France',       lat: 49.01,  lng: 2.55,    iata: 'CDG' },
+  { city: 'Amsterdam',   country: 'Netherlands',  lat: 52.31,  lng: 4.76,    iata: 'AMS' },
+  { city: 'Madrid',      country: 'Spain',        lat: 40.47,  lng: -3.57,   iata: 'MAD' },
+  { city: 'Zurich',      country: 'Switzerland',  lat: 47.46,  lng: 8.55,    iata: 'ZRH' },
+  // Africa
+  { city: 'Nairobi',     country: 'Kenya',        lat: -1.32,  lng: 36.93,   iata: 'NBO' },
+  { city: 'Djibouti',    country: 'Djibouti',     lat: 11.55,  lng: 43.16,   iata: 'JIB' },
+  { city: 'Addis Ababa', country: 'Ethiopia',     lat: 8.98,   lng: 38.80,   iata: 'ADD' },
+  { city: 'Johannesburg',country: 'South Africa', lat: -26.13, lng: 28.24,   iata: 'JNB' },
+  { city: 'Casablanca',  country: 'Morocco',      lat: 33.37,  lng: -7.59,   iata: 'CMN' },
+  // Asia / Pacific
+  { city: 'Bangkok',     country: 'Thailand',     lat: 13.69,  lng: 100.74,  iata: 'BKK' },
+  { city: 'Singapore',   country: 'Singapore',    lat: 1.35,   lng: 103.99,  iata: 'SIN' },
+  { city: 'Kuala Lumpur',country: 'Malaysia',     lat: 2.74,   lng: 101.71,  iata: 'KUL' },
+  { city: 'Tokyo',       country: 'Japan',        lat: 35.55,  lng: 139.78,  iata: 'NRT' },
+  { city: 'Seoul',       country: 'South Korea',  lat: 37.46,  lng: 126.44,  iata: 'ICN' },
+  { city: 'New Delhi',   country: 'India',        lat: 28.55,  lng: 77.10,   iata: 'DEL' },
+  { city: 'Mumbai',      country: 'India',        lat: 19.09,  lng: 72.87,   iata: 'BOM' },
+  { city: 'Sydney',      country: 'Australia',    lat: -33.95, lng: 151.18,  iata: 'SYD' },
+  // Americas
+  { city: 'Toronto',     country: 'Canada',       lat: 43.68,  lng: -79.63,  iata: 'YYZ' },
+  { city: 'New York',    country: 'USA',          lat: 40.64,  lng: -73.78,  iata: 'JFK' },
+  { city: 'Miami',       country: 'USA',          lat: 25.80,  lng: -80.29,  iata: 'MIA' },
+  { city: 'Los Angeles', country: 'USA',          lat: 33.94,  lng: -118.41, iata: 'LAX' },
+  { city: 'Mexico City', country: 'Mexico',       lat: 19.44,  lng: -99.07,  iata: 'MEX' },
+  { city: 'Bogota',      country: 'Colombia',     lat: 4.70,   lng: -74.15,  iata: 'BOG' },
+  { city: 'Lima',        country: 'Peru',         lat: -12.02, lng: -77.11,  iata: 'LIM' },
 ];
 
 // ── inland border crossing points ─────────────────────────────────────────
@@ -127,11 +150,37 @@ export async function POST(req: NextRequest) {
 
   const inTensionZone = isNearTensionZone(lat, lng);
 
-  // Find the 3 nearest safe hubs
+  // Find nearest safe hubs — EXCLUDING the hub the user is already at/in
+  // (same city name or within 60 km) so we never suggest "Dubai → Dubai".
+  // Also de-duplicate by keeping at most one hub per country for diversity.
+  const usedCountries = new Set<string>();
   const sortedHubs = [...SAFE_HUBS]
     .map(h => ({ ...h, distKm: haversineKm(lat, lng, h.lat, h.lng) }))
+    .filter(h => {
+      // Skip if user is already there (within 60 km or city name substring match)
+      if (h.distKm < 60) return false;
+      const cityLower = city.toLowerCase();
+      if (cityLower.includes(h.city.toLowerCase()) || h.city.toLowerCase().includes(cityLower.split(' ')[0])) return false;
+      return true;
+    })
     .sort((a, b) => a.distKm - b.distKm)
+    // Take up to 4 hubs, but enforce one-per-country diversity after the first 2
+    .filter((h, idx) => {
+      if (idx < 2) { usedCountries.add(h.country); return true; }
+      if (usedCountries.has(h.country)) return false;
+      usedCountries.add(h.country);
+      return true;
+    })
     .slice(0, 4);
+
+  // Safety net: if all hubs were filtered out (user is at every hub somehow), fall back to full sorted list
+  if (sortedHubs.length === 0) {
+    const fallback = [...SAFE_HUBS]
+      .map(h => ({ ...h, distKm: haversineKm(lat, lng, h.lat, h.lng) }))
+      .sort((a, b) => a.distKm - b.distKm)
+      .slice(1, 5); // skip index 0 (nearest = user's own city) take next 4
+    sortedHubs.push(...fallback);
+  }
 
   const routes: EvacRoute[] = [];
 
@@ -176,9 +225,9 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // ── ROUTE 0: Taxi/Rideshare to nearest airport ───────────────────
+  // ── ROUTE 0: Taxi/Rideshare to nearest airport (only if user is NOT already at an airport hub)
   const nearestHub = sortedHubs[0];
-  if (nearestHub.distKm < 80) {
+  if (nearestHub && nearestHub.distKm < 120) {
     routes.push({
       id: 'taxi-1',
       rank: 0,
@@ -237,11 +286,11 @@ export async function POST(req: NextRequest) {
     durationH:  Math.round(hub1.distKm / 750 * 10) / 10 + 0.5,
     safety:    inTensionZone ? 'MODERATE' : 'SAFE',
     notes:     `Direct flight from nearest airport. Search Google Flights / Skyscanner for ${hub1.iata}.`,
-    bookingUrl: `https://www.google.com/travel/flights?tfs=CBwQARooEgoyMDI2LTAzLTE5agcIARIDSkhScgcIARIDSkhS&dest=${hub1.iata}&pax=${passengers}`,
-    operator:  `Multiple carriers via ${hub1.iata}`,
-    flightPriceUSD: fp1.pricePerPax * passengers,
-    priceTier: fp1.priceTier,
-  });
+    bookingUrl: `https://www.google.com/travel/flights?q=flights+to+${encodeURIComponent(hub1.city)}`,
+    operator:   `Multiple carriers via ${hub1.iata}`,
+        flightPriceUSD: fp1.pricePerPax * passengers,
+        priceTier: fp1.priceTier,
+      });
 
   routes.push({
     id: 'air-1',
